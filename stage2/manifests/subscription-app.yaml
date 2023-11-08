@@ -1,0 +1,67 @@
+apiVersion: v1                    
+kind: Namespace
+metadata:
+  name: rocket-chat                             
+---
+apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  name: rocket-chat
+  namespace: rocket-chat
+spec:
+  componentKinds:
+  - group: apps.open-cluster-management.io
+    kind: Subscription
+  descriptor: {}
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values: 
+          - rocket-chat
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ggithubcom-idanhenik-rh-disaster-recovery-workshop-ns
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: Channel
+metadata:
+  annotations:
+    apps.open-cluster-management.io/reconcile-rate: medium
+  name: ggithubcom-idanhenik-rh-disaster-recovery-workshop
+  namespace: ggithubcom-idanhenik-rh-disaster-recovery-workshop-ns
+spec:
+  type: Git
+  pathname: 'https://github.com/IdanHenik/RH-Disaster-Recovery-Workshop.git'
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  annotations:
+    apps.open-cluster-management.io/git-branch: 
+    apps.open-cluster-management.io/git-path: 
+    apps.open-cluster-management.io/reconcile-option: merge
+  labels:
+    app: rocket-chat
+  name: rocket-chat-subscription-1
+  namespace: rocket-chat
+spec:
+  channel: ggithubcom-idanhenik-rh-disaster-recovery-workshop-ns/ggithubcom-idanhenik-rh-disaster-recovery-workshop
+  placement:
+    placementRef:
+      kind: PlacementRule
+      name: rocket-chat-placement-1
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  labels:
+    app: rocket-chat
+  name: rocket-chat-placement-1
+  namespace: rocket-chat
+spec:
+  clusterSelector:
+    matchLabels:
+      'name': 'primary'

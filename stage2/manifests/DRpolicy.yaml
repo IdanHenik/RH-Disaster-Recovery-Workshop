@@ -1,0 +1,15 @@
+apiVersion: ramendr.openshift.io/v1alpha1
+kind: DRPolicy
+metadata:
+  finalizers:
+    - drpolicies.ramendr.openshift.io/ramen
+  labels:
+    cluster.open-cluster-management.io/backup: resource
+  name: rh-dr-demo
+spec:
+  drClusters:
+    - primary # List of DRCluster resources that are governed by this policy
+    - secondary
+  replicationClassSelector: {} #Label selector to identify all the VolumeReplicationClasses
+  schedulingInterval: 5m #scheduling Interval for replicating Persistent Volume data to a peer cluster.
+  volumeSnapshotClassSelector: {} #Label selector to identify all the VolumeSnapshotClasses
