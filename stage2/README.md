@@ -30,7 +30,7 @@ Welcome to the second stage of the Disaster Recovery Workshop. In this stage, we
   - [Alert Rocket.Chat :red\_exclamation\_mark: :red\_exclamation\_mark:](#alert-rocketchat-red_exclamation_mark-red_exclamation_mark)
     - [6. Preform FailOver to the secondary cluster](#6-preform-failover-to-the-secondary-cluster)
     - [7. Relocate to the Primary Site](#7-relocate-to-the-primary-site)
-  - [:confetti\_ball: You have been accomplish this stage successfully :confetti\_ball:](#confetti_ball-you-have-been-accomplish-this-stage-successfully-confetti_ball)
+  - [:confetti\_ball: You accomplished this stage successfully :confetti\_ball:](#confetti_ball-you-accomplished-this-stage-successfully-confetti_ball)
 
 ## Introduction
 
@@ -413,6 +413,6 @@ In order to accomplish that you need to execute a `Relocate`
 
 7.4 the pods on the secondary cluster in the rocket-chat namespace will start terminating and will be relocated at the Primary cluster.
 
-##  :confetti_ball: You have been accomplish this stage successfully :confetti_ball:
+##  :confetti_ball: You accomplished this stage successfully :confetti_ball:
 
 
