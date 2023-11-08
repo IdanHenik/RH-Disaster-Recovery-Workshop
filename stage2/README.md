@@ -27,14 +27,14 @@ Welcome to the second stage of the Disaster Recovery Workshop. In this stage, we
       - [3. Configure the application](#3-configure-the-application)
     - [4. Bind the application to the DRpolicy](#4-bind-the-application-to-the-drpolicy)
     - [5. Use the application](#5-use-the-application)
-  - [Alert Rocket.Chat :red\_exclamation\_mark: :red\_exclamation\_mark:](#alert-rocketchat-red_exclamation_mark-red_exclamation_mark)
+  - [Disaster ALERT !!](#disaster-alert-)
     - [6. Preform FailOver to the secondary cluster](#6-preform-failover-to-the-secondary-cluster)
     - [7. Relocate to the Primary Site](#7-relocate-to-the-primary-site)
   - [:confetti\_ball: You accomplished this stage successfully :confetti\_ball:](#confetti_ball-you-accomplished-this-stage-successfully-confetti_ball)
 
 ## Introduction
 
-Asynchronous replication is a critical part of your disaster recovery strategy. It enables you to maintain data consistency and minimize data loss even in the face of unexpected outages. As our journay continues you will be exposed at This stage and you will be guide through a simulated scenario, illustrating how to implement asynchronous replication with a real-world application, Rocket.Chat, deployed from a `Hub-cluster` (ACM) to a primary `OpenShift cluster`. We will also leverage the `Open Data Foundation` (ODF) Multi-Cluster and `OpenShift DR` Operator with a specific `DRpolicy` to execute a failover to a secondary cluster.
+Asynchronous replication is a critical part of your disaster recovery strategy. It enables you to maintain data consistency and minimize data loss even in the face of unexpected outages. As our journay continues At this stage you will be exposed and you will be guide through a simulated scenario, illustrating how to implement asynchronous replication with a real-world application, Rocket.Chat, deployed from a `Hub-cluster` (ACM) to a primary `OpenShift cluster`. We will also leverage the `Open Data Foundation` (ODF) Multi-Cluster and `OpenShift DR` Operator with a specific `DRpolicy` to execute a failover to a secondary cluster.
 
 ## Asynchronous Replication Overview
 
@@ -348,7 +348,7 @@ Can be done by the method we used before (through ACM's applications)
 
 ![using-rocket](images/rocket-data.png)
 
-## Alert Rocket.Chat :red_exclamation_mark: :red_exclamation_mark:
+##  <span style="color: #FF5733;">Disaster ALERT !!</span>
 
 
 ***a Catastrophic event just happend ! Severe power outage, has caused the primary data center to become inoperable. The networking infrastructure, servers, and power supply have been severely affected, rendering the Primary Cluster  inaccessible.***
@@ -405,11 +405,11 @@ In order to accomplish that you need to execute a `Relocate`
 
 7.3 Provide the following details on the popup:
 
-- Select policy: rh-dr-demo
+- Select policy: `rh-dr-demo`
 
-- Target cluster: primary
+- Target cluster: `primary`
 
-- Select subscriptions group: rocket-chat-subscription-1
+- Select subscriptions group: `rocket-chat-subscription-1`
 
 7.4 the pods on the secondary cluster in the rocket-chat namespace will start terminating and will be relocated at the Primary cluster.
 
