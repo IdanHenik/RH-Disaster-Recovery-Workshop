@@ -230,9 +230,8 @@ spec:
     - dpa-1
 ```
 ### 4. Configure the passive cluster
-4.1 Install OADP - you can use the guidelines from stage 1 [Stage 1: Backup and Restore MongoDB using OADP](stage1/stage1.md)
 
-4.2 Create Credentails secret for OADP operator to use.
+4.1 Create Credentails secret for OADP operator to use.
 
 ```bash
 oc create secret generic cloud-credentials --namespace openshift-adp --from-file cloud=secret.yaml
@@ -244,7 +243,7 @@ secret.yaml:
 aws_access_key_id=<INSERT_VALUE>
 aws_secret_access_key=<INSERT_VALUE>
 ```
-4.3 Create DataProtectionApplication (DPA) CR:
+4.2 Create DataProtectionApplication (DPA) CR:
 ```bash
 oc apply -f DataProtectionApplication.yaml
 ```
@@ -285,7 +284,7 @@ spec:
           region: eu-west-1
         provider: aws
 ```
-4.4 Modify VolumeSnapShotClass
+4.3 Modify VolumeSnapShotClass
 
 The Velero CSI plugin, to backup CSI backed PVCs, will choose the VolumeSnapshotClass in the cluster that has the same driver name and also has the velero.io/csi-volumesnapshot-class: "true" label set on it.
 
