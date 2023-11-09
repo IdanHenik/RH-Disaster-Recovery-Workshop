@@ -11,7 +11,6 @@
   - [Async vs Snapshot based](#async-vs-snapshot-based)
   - [Simulated Scenarios](#simulated-scenarios)
   - [Prerequisites](#prerequisites)
-- [Change me (DPA)](#change-me-dpa)
   - [Implementation Guidelines](#implementation-guidelines)
   - [What is OADP ?](#what-is-oadp-)
     - [What is OADP](#what-is-oadp)
@@ -68,7 +67,6 @@ Before you begin, ensure you have the following prerequisites in place:
 - The OADP Operator installed on both clusters.
 - S3 access.
 
-# Change me (DPA)
 
 ## Implementation Guidelines
 
