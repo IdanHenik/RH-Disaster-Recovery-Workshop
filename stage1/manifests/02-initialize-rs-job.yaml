@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: initialize-rs-job
+spec:
+  template:
+    metadata:
+      name: initialize-rs
+    spec:
+      restartPolicy: Never 
+      containers:
+      - name: mongo-init
+        image: docker.io/mongo:4.0
+        command:
+        - bash
+        - "-c"
+        - |
+          sleep 5
+          mongo --host mongo-0:27017 --eval "rs.initiate({'_id':'rs0','members':[{'_id':0,'host':'mongo-0:27017'},{'_id':1,'host':'mongo-1:27017'},{'_id':2,'host':'mongo-2:27017'}]})"
+  backoffLimit: 5
+
