@@ -30,14 +30,14 @@ Note: For Organizations building and Operating their own Data Centers, the appro
 - Access to RedHat container registry and repositories.
 ### High Level Design
 
-a![sync](images/strech-architecture.png)
+![sync](images/strech-architecture.png)
 ### Deployment Steps
 1. **Deploy MongoDB Database**:
    1.1 Validate the control plane and data plane are deployed at seperated zones:
    ``` bash
    oc get nodes -o=jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.metadata.labels.zone}{"\n"}{end}'
    ```
-   a![sync](images/labels.png)
+   ![sync](images/labels.png)
 
    1.2 Clone the repo and deploy the rocket-chat application
    ``` bash
@@ -46,13 +46,13 @@ a![sync](images/strech-architecture.png)
    oc apply -f manifests/01-mongo-deployment.yaml
 
    ```
-   a![sync](images/mogodb.png)
-   As shown at the diagrm we now created a headless service and a MongoDB statefulset as the first step for creating our DB-replicaset, headless service is 
+   ![sync](images/mogodb.png)
+   As shown at the diagrm we now created a headless service and a MongoDB statefulset as the first step for creating our DB-replicaset, headless services are beneficial when you need direct pod-to-pod communication, when working with StatefulSets or stateful applications, when implementing custom load balancing or discovery mechanisms.
 ``` bash
 oc get pods -o wide
 ```
     We can see all the DB's pods are sperated (one each node) which means..*one at each Zone*.
-   a![sync](images/mongodb2.png)
+   ![sync](images/mongodb2.png)
 
 2. **Configure Database Replicas**:
    2.1 In order to initate MongoDB's replicaset, apply the Job.
@@ -77,11 +77,11 @@ oc get pods -o wide
 
 
 ### Real-Life Scenario Simulation
-- Simulate a disaster scenario such as hardware failure in one geographical location or even If we want to live at the edge, let's assume two of our Data Centers are having a disaster scenrio right now.
-- You are free to destroy two workers nodes selected randomly, you can destory them one by one or two at the same time.
+- Simulate a disaster scenario such as hardware failure in one geographical location. If we want to live at the edge, let's assume two of our Data Centers are having a disaster scenrio right now.
+- You are free to destroy two workers nodes and to select them randomly, you can destory them one by one or two at the same time.
 - Remain your session connected to the app and meanwhile the disaster knocking at your door just relax and see how secured your application is.
 
-a![sync](images/screen-recorder-mon-feb-26-2024-01-14-05.webm)
+a![sync](images/dr.mp4)
 
 ## Conclusion
 In this stage, we explored the stretching cluster strategy, highlighting its advantages and impact on RTO and RPO. Through a step-by-step implementation guide and real-life scenario simulation, we demonstrated the resilience and reliability of this approach using application and a DB's replicaset. Stay tuned for the next stage where we will delve deeper into alternative DR strategies.
