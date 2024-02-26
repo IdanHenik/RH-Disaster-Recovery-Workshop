@@ -81,7 +81,7 @@ oc get pods -o wide
 - You are free to destroy two workers nodes and to select them randomly, you can destory them one by one or two at the same time.
 - Remain your session connected to the app and meanwhile the disaster knocking at your door just relax and see how secured your application is.
 
-a![sync](images/dr.mp4)
+![sync](images/dr.mp4)
 
 ## Conclusion
 In this stage, we explored the stretching cluster strategy, highlighting its advantages and impact on RTO and RPO. Through a step-by-step implementation guide and real-life scenario simulation, we demonstrated the resilience and reliability of this approach using application and a DB's replicaset. Stay tuned for the next stage where we will delve deeper into alternative DR strategies.
