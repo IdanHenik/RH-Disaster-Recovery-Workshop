@@ -82,8 +82,7 @@ oc get pods -o wide
 - Remain your session connected to the app and meanwhile the disaster knocking at your door just relax and see how secured your application is.
 
 
-
-![sync](https://github.com/IdanHenik/RH-Disaster-Recovery-Workshop/assets/96540987/861bacc0-4383-4db4-be87-22ea53a4ae3c)
+https://github.com/IdanHenik/RH-Disaster-Recovery-Workshop/assets/96540987/861bacc0-4383-4db4-be87-22ea53a4ae3c
 
 
 
